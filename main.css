@@ -1,0 +1,39 @@
+body {
+    background-color: #C2DFFF;
+}
+
+#output-places .card {
+    /* Add shadows to create the "card" effect */
+    align box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 50px;
+    padding: 0px 0px;
+    margin: 0px 10px;
+}
+
+/* On mouse-over, add a deeper shadow */
+
+#output-places .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+
+#output-places .container {
+    width: 100%;
+    height: auto;
+    padding: 2px 16px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+#output-places .container-name {
+    width: 100%;
+    /*   text-align: center; */
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.row {
+    margin: auto;
+}
