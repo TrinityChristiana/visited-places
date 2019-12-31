@@ -84,19 +84,6 @@ function placesAppendWant() {
     );
 }
 
-// //Appends HTML for cards without the message 
-// function placesAppendNo() {
-//     $("#output-places").append(
-//         `<div class="card col-sm-12 col-md-6 col-lg-3">
-//         <img src=${imageLinks[i]} alt="Avatar" style="width:100%">
-//           <div class="container-name">
-//             <h4><b>${imageNames[i]} </b></h4> 
-//             <p></p> 
-//           </div>
-//       </div>`
-//     );
-// }
-
 //show message to user determined by search
 const searchMessage = (state) => {
     switch (state){
