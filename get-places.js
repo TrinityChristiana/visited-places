@@ -84,17 +84,40 @@ function placesAppendWant() {
     );
 }
 
-//Appends HTML for cards without the message 
-function placesAppendNo() {
-    $("#output-places").append(
-        `<div class="card col-sm-12 col-md-6 col-lg-3">
-        <img src=${imageLinks[i]} alt="Avatar" style="width:100%">
-          <div class="container-name">
-            <h4><b>${imageNames[i]} </b></h4> 
-            <p></p> 
-          </div>
-      </div>`
-    );
+// //Appends HTML for cards without the message 
+// function placesAppendNo() {
+//     $("#output-places").append(
+//         `<div class="card col-sm-12 col-md-6 col-lg-3">
+//         <img src=${imageLinks[i]} alt="Avatar" style="width:100%">
+//           <div class="container-name">
+//             <h4><b>${imageNames[i]} </b></h4> 
+//             <p></p> 
+//           </div>
+//       </div>`
+//     );
+// }
+
+//show message to user determined by search
+const searchMessage = (state) => {
+    switch (state){
+        case "nothing":
+            $("#message").html(
+                "<h2>No thing was entered in the search box or selected. Please try to search again.<h2>"
+            );
+            console.log("nothing");
+            break;
+        case "not found":
+            $("#message").html(
+                "<h2> Entered Search item was not found. Please try again.<h2>"
+            );
+            console.log("not found");
+            break;
+        case "clear":
+            
+            $("#message").html("");
+            console.log("clear");
+            break;
+    }
 }
 
 //Shows the cards on page
@@ -142,8 +165,12 @@ function btnEnter() {
             for (i = 0; i < imageNames.length; i++) {
                 if (imageNameLower[i].includes(searchBoxStr)) {
                     if (iBeen[i] == "true") {
+                        searchMessage("clear");
+                        console.log("173");
                         placesAppendBeen();
                     } else if (iBeen[i] == "false") {
+                        searchMessage("clear");
+                        console.log("177");
                         placesAppendWant();
                     }
                 }
@@ -159,28 +186,36 @@ function btnEnter() {
     if (been == "true") {
         //CLears cards on page
         $("#output-places").html("");
+
         for (i = 0; i < imageLinks.length; i++) {
             if (iBeen[i] == "true") {
+                searchMessage("clear");
+                console.log("197");
                 placesAppendBeen();
             }
         }
     } else if (been == "false") {
         //Clears cards on page
         $("#output-places").html("");
+
         for (i = 0; i < imageLinks.length; i++) {
             if (iBeen[i] == "false") {
+                searchMessage("clear");
+                console.log("208");
                 placesAppendWant();
             }
         }
     } else if ((searchBox == "") && (been == undefined)) {
-        $("#message").html(
-            "<h2>No thing was entered in the search box or selected. Please try to search again.<h2>"
-        );
+        searchMessage("nothing");
+        // $("#message").html(
+        //     "<h2>No thing was entered in the search box or selected. Please try to search again.<h2>"
+        // );
         populatePlaces();
     } else if ((imageNamesStr.includes(searchBoxStr)) == false) {
-        $("#message").html(
-            "<h2> Entered Search item was not found. Please try again.<h2>"
-        );
+        searchMessage("not found");
+        // $("#message").html(
+        //     "<h2> Entered Search item was not found. Please try again.<h2>"
+        // );
         populatePlaces();
     }
 
@@ -194,14 +229,17 @@ function btnEnter() {
             for (i = 0; i < imageNames.length; i++) {
                 if (imageNameLower[i].includes(searchBoxStr)) {
                     if (iBeen[i] == "true") {
+                        searchMessage("clear");
+                        console.log("237");
                         placesAppendBeen();
                     }
                 }
             }
         } else if ((imageNamesStr.includes(searchBoxStr)) == false) {
-            $("#message").html(
-                "<h2> Entered Search item was not found. Please try again.<h2>"
-            );
+            searchMessage("not found");
+            // $("#message").html(
+            //     "<h2> Entered Search item was not found. Please try again.<h2>"
+            // );
             populatePlaces();
         }
     }
@@ -220,8 +258,9 @@ function btnEnter() {
                 }
             }
         } else if ((imageNamesStr.includes(searchBoxStr)) == false) {
-            $("#message").html(
-                "<h2> Entered Search item was not found. Please try again.<h2>")
+            searchMessage("not found");
+            // $("#message").html(
+            //     "<h2> Entered Search item was not found. Please try again.<h2>")
             populatePlaces();
         }
     }
